@@ -45,6 +45,8 @@
 
 .dates .date ul li {
   color: grey;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .dates .date:last-child ul li:last-child::before {
