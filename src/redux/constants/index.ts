@@ -1,0 +1,2 @@
+export const SET_MISSIONS = 'SET_MISSIONS'
+export const SET_MISSIONS_ERROR = 'SET_MISSIONS_ERROR'

@@ -1,0 +1,53 @@
+.leavingArrivingBloomers {
+  padding: 20px;
+}
+.leavingArrivingBloomers h2 {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.freelance-name {
+  list-style: none;
+  padding: 0;
+}
+
+.freelance-name li {
+  position: relative;
+}
+
+.freelance-name li::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: grey;
+}
+
+.dates {
+  list-style: none;
+}
+
+.dates .date {
+  position: relative;
+}
+
+.dates .date div {
+  width: 10px;
+  height: 10px;
+  background-color: grey;
+  position: absolute;
+  left: -16px;
+  top: 5px;
+  border-radius: 50px;
+}
+
+.dates .date ul li {
+  color: grey;
+}
+
+.dates .date:last-child ul li:last-child::before {
+  content: "";
+  width: 0;
+}

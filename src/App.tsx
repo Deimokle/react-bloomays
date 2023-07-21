@@ -1,26 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import { setMissions } from './redux/actions/missions';
+import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+import LeavingArrivingBloomers from './components/missions/leavingArrivingBloomers';
 
-function App() {
+function App(props: any) {
+  const { actions, missionsData } = props
+
+  useEffect(() => {
+    actions.setMissions()
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {missionsData.length ? <LeavingArrivingBloomers missions={missionsData} />: null}
     </div>
   );
 }
+const mapStateToProps = (state: any) => ({
+  missionsData: state.missions.data
+});
 
-export default App;
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  actions: {
+    setMissions: async () => dispatch(await setMissions())
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
