@@ -1,9 +1,9 @@
 import { format } from "date-fns"
 import React, { useEffect, useState } from "react"
 
-export default ({color, data}: {color: string, data: Map<string, any[]>}) => {
+export default ({title, color, data}: {title:string, color: string, data: Map<string, any[]>}) => {
   const [ count, setCount ] = useState(0)
-  const dataKeys = Array.from(data.keys())
+  const dataKeys = Array.from(data.keys()).sort((a,b) => new Date(a).getTime() - new Date(b).getTime())
   useEffect(() => {
     let nb = 0;
     for (const key of dataKeys) {
@@ -19,7 +19,7 @@ export default ({color, data}: {color: string, data: Map<string, any[]>}) => {
 
   return (
     <div className='leavingArrivingBloomers'>
-      <h2><u style={{color}}>{count}</u> Bloomers entrants</h2>
+      <h2><u style={{color}}>{count}</u> {title}</h2>
       <ul className='dates'>
         {
           dataKeys.map((missionDate: any, dateKey) => (
